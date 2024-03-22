@@ -34,3 +34,4 @@ brianhilsden@gmail.com
 github.com/brianhilsden
 
 ### License
+MIT
