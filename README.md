@@ -31,7 +31,7 @@ Installation steps:
 ### Installation instruction
 ```
 1. git clone git@github.com:brianhilsden/Week-1-Code-Challenge.git
-2. node install prompt-sync 
+2. npm install prompt-sync 
 ```
 ## Usage
 Here are examples of the programs in use
