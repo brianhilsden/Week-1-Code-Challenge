@@ -19,6 +19,7 @@ function gradeCalculator(marks){
     }
 }
 
+console.log("Welcome to our grade calculator.\n")
 let exit=false; //declares exit variable and assigns an initial boolean of false to it
 
 //The while loop continuosly calculates grades until the user choses to exit
