@@ -57,12 +57,44 @@ function nhifCalculator(grossSalary){
 
 }
 function netSalaryCalculator(){
+    let nhifTruth=parseInt(prompt("Deduct NHIF? Enter 1 for Yes, 2 for No: "))
+    let nssfTruth=parseInt(prompt("Deduct NSSF? Enter 1 for Yes, 2 for No: "))
+    let levyTruth=parseInt(prompt("Deduct Housing levy? Enter 1 for Yes, 2 for No: "))
+
     const grossSalary=basicSalary+benefits;
     console.log(`\nYour gross salary is ${grossSalary}`)
     const nhif=nhifCalculator(grossSalary)
     const nssf=0.06*basicSalary;
     const housingLevy=0.015*grossSalary
-    const taxablePay=basicSalary-(1080+housingLevy+nhif+nssf)
+    const contributionBenefit=1080;
+    let taxablePay;
+    if(levyTruth===1 && nssfTruth===2 && nhifTruth===2){
+        taxablePay=basicSalary-(contributionBenefit+housingLevy)
+    }
+    else if(levyTruth===2 && nssfTruth===1 && nhifTruth===2){
+        taxablePay=basicSalary-(contributionBenefit+nssf)
+    }
+    else if(levyTruth===2 && nssfTruth===2 && nhifTruth===1){
+        taxablePay=basicSalary-(contributionBenefit+nhif)
+    }
+    else if(levyTruth===1 && nssfTruth===1 && nhifTruth===2){
+        taxablePay=basicSalary-(contributionBenefit+housingLevy+nssf)
+    }
+    else if(levyTruth===1 && nssfTruth===2 && nhifTruth===1){
+        taxablePay=basicSalary-(contributionBenefit+housingLevy+nhif)
+    }
+    else if(levyTruth===2 && nssfTruth===1 && nhifTruth===1){
+        taxablePay=basicSalary-(contributionBenefit+nssf+nhif)
+    }
+    else if(levyTruth===1 && nssfTruth===1 && nhifTruth===1){
+        taxablePay=basicSalary-(contributionBenefit+housingLevy+nhif+nssf)
+    }
+    else if(levyTruth===2 && nssfTruth===2 && nhifTruth===2){
+        taxablePay=basicSalary-contributionBenefit
+    }
+    else{
+        return "Invalid entry for NHIF, NSSF or Housing levy. Try again"
+    }
     
     const salaryRates=[{min:0,max:24000,rate:0.10,tax:2400},{min:24001,max:32333,rate:0.25,tax:2083.25},{min:32334,max:500000,rate:0.3,tax:140300.1},{min:500001,max:800000,rate:0.325,tax:97500},{min:800001,max:100000000,rate:0.35,tax:200000}]
 
@@ -78,23 +110,20 @@ function netSalaryCalculator(){
         }
     } 
     );
-    const insuranceRelief=0.15*nhif
     const personalRelief=2400;
-    const payeTax=totalTax-(personalRelief+insuranceRelief)
-
+    const insuranceRelief=0.15*nhif
+    let payeTax;
+    nhifTruth===1?payeTax=totalTax-(personalRelief+insuranceRelief):payeTax=totalTax-(personalRelief)
     
     if(payeTax>0){
-        const netSalary=basicSalary-payeTax;
-        console.log(`Your netSalary is: ${netSalary}`)
-
-        return `Your PAYE is: ${payeTax}`
+        const netSalary=taxablePay-payeTax;
+        console.log(`Your PAYE is: ${payeTax}`) 
+        return(`Your netSalary is: ${netSalary}`)
     }
     else{
-        const netSalary=basicSalary;
-        console.log(`Your netSalary is: ${netSalary}`)
-        return "Tax is: 0"
+        const netSalary=taxablePay;
+        console.log( "Tax is: 0")
+        return (`Your netSalary is: ${netSalary}`)
     }
-  
-    
 }
 console.log(netSalaryCalculator())
