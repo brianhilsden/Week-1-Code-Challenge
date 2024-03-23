@@ -14,7 +14,7 @@ function speedDetector(speed){
             return "License suspended \n";
         }
         else{
-            return `Points: ${demeritPoints}\n`;
+            return `Points: ${demeritPoints}`;
         }
     }
 }
