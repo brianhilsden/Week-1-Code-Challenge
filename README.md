@@ -35,9 +35,9 @@ Installation steps:
 ```
 ## Usage
 Here are examples of the programs in use
-```md
-    ![alt text](assets/images/screenshot.png)
-```
+
+    ![Challenge-1-working-image](/Screenshot1.png)
+
 
 ## Technologies used
 Javascript
