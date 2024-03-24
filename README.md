@@ -1,7 +1,7 @@
 # Week 1 Code Challenge
 #### Date: 22/March/2024
 
-#### By: *Brian Omondi*
+#### Author: *Brian Omondi*
 
 ## Description
 The project tackles three problems presented and builds programs to solve them. They are as follows:
