@@ -35,10 +35,14 @@ Installation steps:
 ```
 ## Usage
 Here are examples of the programs in use
+1. Code challenge 1:
+    ![challenge-1-screenshot](/assets/images/Screenshot%20from%202024-03-23%2023-32-00.png)
 
-    ![Challenge-1-working-image](/Screenshot1.png)
+2. Code challenge 2:
+    ![challenge-2-screenshot](/assets/images/Screenshot%20from%202024-03-23%2023-36-13.png)
 
-
+3. Code challenge 3:
+    ![challenge-3-screenshot](/assets/images/Screenshot%20from%202024-03-24%2013-11-54.png)
 ## Technologies used
 Javascript
 
