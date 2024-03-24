@@ -61,7 +61,7 @@ function nhifCalculator(grossSalary){
 /*Function uses the basic salary,benefits, nhif to calculate various values such as: gross salary, nssf deduction, taxable pay, total tax, PAYE, net salary*/
 function netSalaryCalculator(){
     let contributionBenefitTruth=parseInt(prompt("Include contribution benefit? Enter 1 for Yes, 2 for No: "))
-    const contributionBenefit=contributionBenefitTruth===1?1080:0; //Default contribution benefit as per the KRA calculator site
+    const contributionBenefit=contributionBenefitTruth===1?1080:0; /*Default contribution benefit as per the KRA calculator site*/
     const grossSalary=basicSalary+benefits+contributionBenefit; //Calculate gross salary
     const nhif=nhifCalculator(grossSalary) //Calculate nhif using the nhif function and gross salary
     let nssfInterimValue=0.06*basicSalary; /*Calculate an interim nssf value first to later check if it surpases the nssf limit of 2160 before using it in calculations*/
@@ -112,10 +112,10 @@ function netSalaryCalculator(){
                     {min:500001,max:800000,rate:0.325,tax:97500},
                     {min:800001,max:100000000,rate:0.35,tax:200000}]
 
-    let prevTaxes=0; //Stores initial value of taxes
+    let prevTaxes=0; //Stores initial amount of tax
     let totalTax; //Declares totalTax variable, this will store the total tax value 
 
-    //Loops through the taxRates array to check value
+    /*Loops through the taxRates array to check range in which taxable amount lies, then if it surpases a certain range, the prevTaxes variable in incremented by that previous ranges full tax. Process is repeated until the taxable amount gets to its range. Tax for the amount in this range is then calculated and the value added to the prevTaxes to get the total tax amount*/
     taxRates.forEach((element) => {
         if(element.max<taxablePay){
             prevTaxes+=element.tax
@@ -134,16 +134,18 @@ function netSalaryCalculator(){
     nhifTruth===1?payeTax=totalTax-(personalRelief+insuranceRelief):payeTax=totalTax-(personalRelief)
     
     console.log(`\nYour gross salary is: ${grossSalary}`) //Displays gross salary
-    console.log(`Total benefits: ${benefits+contributionBenefit}`)
-    nhifTruth===1 && console.log(`NHIF deduction is: ${nhif}`)
+    console.log(`Total benefits: ${benefits+contributionBenefit}`) //Displays total benefits
+
+    //The below codes first check if user chose to deduct it before displaying deduction amount
+    nhifTruth===1 && console.log(`NHIF deduction is: ${nhif}`) 
     nssfTruth===1 && console.log(`NSSF deduction is: ${nssf}`)
     levyTruth===1 && console.log(`Housing levy deduction is: ${housingLevy}`)
     
-    //The conditional statements first check if have a PAYE tax, if yes then it is deducted from taxable pay to get net salary.If not then net salary is equated to the taxable pay.Either way, the tax amount and net salary values will be displayed/returned. 
+    /*The conditional statements first check if user has a PAYE tax, if yes then it is deducted from taxable pay to get net salary.If not then net salary is equated to the taxable pay.Either way, the tax amount and net salary values will be displayed/returned. */
     if(payeTax>0){
         const netSalary=taxablePay-payeTax;
-        console.log(`Taxable Pay: ${taxablePay}`)
-        console.log(`Your PAYE is: ${payeTax}`) 
+        console.log(`Taxable Pay: ${taxablePay}`) //Display taxable pay
+        console.log(`Your PAYE is: ${payeTax}`) //Display PAYE
         console.log(`Total statutory deductions and benefits is: ${grossSalary-netSalary}`)
         
         return(`Your net salary is: ${netSalary}`)
