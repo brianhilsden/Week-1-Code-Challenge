@@ -5,9 +5,11 @@
 
 ## Description
 The project tackles three problems presented and builds programs to solve them. They are as follows:
-1. A program that prompts the user to input student marks. The input should be between   0 and 100. It then outputs the correct grade: A > 79, B - 60 to 79, C -  59 to 49, D - 40 to 49, E - less 40. 
-2. A program that takes as input the speed of a car e.g 80. If the speed is less than 70, it prints“Ok”. Otherwise, for every 5 km/s above the speed limit (70), it gives the driver one demerit point and prints the total number of demerit points.
-3. A program whose major task is to calculate an individual’s Net Salary by getting the inputs of basic salary and benefits. It then calculates the payee (i.e. Tax), NHIFDeductions, NSSFDeductions, gross salary, and net salary. 
+1. A program that prompts the user to input student marks. The input should be between 0 and 100. It then outputs the correct grade: A > 79, B - 60 to 79, C -  59 to 49, D - 40 to 49, E - less 40. If user input is not in the range of 0 to 100, user is notified and given the chance to try again 
+
+2. A program that takes as input the speed of a car e.g 80. If the speed is less than 70, it prints“Ok”. Otherwise, for every 5 km/s above the speed limit (70), it gives the driver one demerit point and prints the total number of demerit points. Also if the user has more than 12 demerit points, they are notified that the license has been suspended
+
+3. A program whose major task is to calculate an individual’s Net Salary by getting the inputs of basic salary and benefits. It also takes some user choices into account, including what deductions or benefits to include in the calculation. It then calculates the taxable income, payee (i.e. Tax), NHIFDeductions, NSSFDeductions, gross salary, and net salary. The program then displays some or all of these values depending on user input.
 
 ## Table of Contents
 - [Installation](#installation)
